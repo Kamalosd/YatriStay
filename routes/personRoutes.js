@@ -125,8 +125,8 @@ router.delete('/:id',async(req,res)=>{
    }
 })
 
-
+//comment
 module.exports=router
 
 
-//Git s/w amdr proj k watch kre sob foldr track kre red dekai ststus karon sv krini file Gulo k akokno mne Git k blbo ai file sv krte chai tumare pas
+//Git s/w amdr proj k watch kre sob foldr track kre red dekai ststus karon sv krini file Gulo k akokno mne Git k blbo ai file sv krte chai tumare pas.ami chai ar sanpshot sv krte tai Git commi -m thn sv hoia jbe.comment add krleo fine modified dekabe,thn local repo k Github r sthe connection
