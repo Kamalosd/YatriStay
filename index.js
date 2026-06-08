@@ -21,7 +21,7 @@
 const express=require("express")
 const app=express()
 const db=require('./app')
-require('dotenv').config()//.env file ta servr k janate hbe ti confiGure,servr bujte pre ar pase .env file ache, arsahaje all avr otabe
+require('dotenv').config()//.env file ta servr k janate hbe ti confiGure,servr bujte pre ar pase .env file ache, arsahaje all avr otabe. .env file k host krina
 
 
 const person=require('./models/person')//person model dia sob db connectivity krbo
@@ -155,7 +155,7 @@ const menuItemRoutes=require('./routes/menuItemRoutes')
 app.use('/person',personRoutes)
 app.use('/menu',menuItemRoutes)
 
-const PORT=process.env.PORT||3003//process.env.PORT a jodi port r val present hle oi port no use hobe.otherwise 3003. node k jokon online servr a host krbo machine khud ka port no deta hai,
+const PORT=process.env.PORT||3003//process.env.PORT a jodi port r val present hle oi port no use hobe.otherwise 3003. node k jokon online servr a host krbo machine khud ka port no deta hai, code local mc run hoi laport bondo hle servr close code amn mc shift kbo jeta 24 hour on
 
 app.listen(PORT,()=>{
     console.log(`servr runin http://localhost:${PORT}`)
