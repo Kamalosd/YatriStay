@@ -190,7 +190,15 @@
 
 
 const mongoose = require("mongoose")
-mongoose.connect("mongodb://127.0.0.1:27017/hotel")
+require('dotenv').config()
+
+//fefine monGodb conection url
+const mongoUrl=process.env.db_URL
+
+
+// const mongoUrl='mongodb+srv://kamal_123:Kamalendu%401234@cluster0.b9jaswk.mongodb.net/hotel' //monGodb atlas servr r sthe vs code conect.online clustr r sthe connrct.db operation online db a jbe not local.code push r somoi usernm password jtesecure thke .env r throuGh manaGe.ata Github a push krbona take var bania akta jaiGai store kre rakbo .env install krbo
+// mongoose.connect("mongodb://127.0.0.1:27017/hotel")//for connected to local monGodb
+mongoose.connect(mongoUrl)
 .then(()=>{
     console.log("Database connected")
 })

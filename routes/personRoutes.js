@@ -129,4 +129,4 @@ router.delete('/:id',async(req,res)=>{
 module.exports=router
 
 
-//Git s/w amdr proj k watch kre sob foldr track kre red dekai ststus karon sv krini file Gulo k akokno mne Git k blbo ai file sv krte chai tumare pas.ami chai ar sanpshot sv krte tai Git commi -m thn sv hoia jbe.comment add krleo fine modified dekabe,thn local repo k Github r sthe connection
+//Git s/w amdr proj k watch kre sob foldr track kre red dekai ststus karon sv krini file Gulo k akokno mne Git k blbo ai file sv krte chai tumare pas.ami chai ar sanpshot sv krte tai Git commi -m thn sv hoia jbe.comment add krleo fine modified dekabe,thn local repo k Github r sthe connection.onno keu sm repo te jodi chnGe kre oat amr local mchina jte ase tar jonno it pull.monodb db k host krar jono monGodb atlas,bec db amrav localy setup krechi tar drun operation hoche,ami chai online jaiGai present hok jar jono sobai acces krte pre,so db server a db add krbo

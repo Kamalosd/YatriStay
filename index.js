@@ -21,13 +21,15 @@
 const express=require("express")
 const app=express()
 const db=require('./app')
+require('dotenv').config()//.env file ta servr k janate hbe ti confiGure,servr bujte pre ar pase .env file ache, arsahaje all avr otabe
+
+
 const person=require('./models/person')//person model dia sob db connectivity krbo
 const MenuItem=require('./models/MenuItem')
 
+
 const bodyParser=require('body-parser')
 app.use(bodyParser.json())//json data vejbo tai ata use nahole onno kichu use krtm json r jaiGai
-
-const port=3002
 
 
 //  /person a jokom e keu data vejbesave krbo.callback main func execute hoar por run kre
@@ -153,6 +155,8 @@ const menuItemRoutes=require('./routes/menuItemRoutes')
 app.use('/person',personRoutes)
 app.use('/menu',menuItemRoutes)
 
-app.listen(port,()=>{
-    console.log(`servr runin http://localhost:${port}`)
+const PORT=process.env.PORT||3003//process.env.PORT a jodi port r val present hle oi port no use hobe.otherwise 3003. node k jokon online servr a host krbo machine khud ka port no deta hai,
+
+app.listen(PORT,()=>{
+    console.log(`servr runin http://localhost:${PORT}`)
 })
