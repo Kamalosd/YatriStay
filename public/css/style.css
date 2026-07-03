@@ -49,16 +49,19 @@ body{
 
 .f-info-socials i{
   font-size: 1.2rem;
-  margin-right: 1rem ;
+   margin: 0 0.5rem;
+ 
 }
 .f-info{
+  width: 100%;
   text-align: center;
   height: 8rem;
   background-color: gray;
  display: flex;
  flex-wrap:wrap;
  justify-content: center;
- align-items: space-evenly;
+  align-content: space-evenly;
+  padding: 1rem 0;
 }
 
 /* Cards */
