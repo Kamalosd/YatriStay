@@ -102,12 +102,12 @@ font-weight: 400;
 
 /* New pae  */
 .add-btn{
-  background-color: red !important;
+  background-color: rgb(152, 40, 40) !important;
   border: none;
 }
 
 /* Edit Page  */
 .edit-btn{
-  background-color: red !important;
+  background-color: rgb(146, 47, 47) !important;
   border: none;
 }
