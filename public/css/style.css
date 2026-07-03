@@ -27,6 +27,7 @@ body{
 /* Footer  */
 .f-info-links a{
   text-decoration: none;
+  margin: 0 0.3rem; 
   color: black;
 
 }
@@ -98,6 +99,12 @@ font-weight: 400;
 
 /* New pae  */
 .add-btn{
+  background-color: red !important;
+  border: none;
+}
+
+/* Edit Page  */
+.edit-btn{
   background-color: red !important;
   border: none;
 }
