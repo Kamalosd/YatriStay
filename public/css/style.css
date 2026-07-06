@@ -100,7 +100,7 @@ font-weight: 400;
   background-color: white;
 }
 
-/* New pae  */
+/* New page  */
 .add-btn{
   background-color: rgb(152, 40, 40) !important;
   border: none;
@@ -110,4 +110,18 @@ font-weight: 400;
 .edit-btn{
   background-color: rgb(146, 47, 47) !important;
   border: none;
+}
+
+/* show Page  */
+.show-img{
+  height: 30vh;
+}
+
+.btns{
+  display: flex;
+   margin-bottom: 1rem;
+}
+.show-card{
+  padding-left: 0;
+  padding-right: 0;
 }
