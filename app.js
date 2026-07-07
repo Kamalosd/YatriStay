@@ -54,10 +54,16 @@ app.get("/listings/:id",async(req,res)=>{
 })
 
 //create route
-app.post("/listings",async(req,res)=>{
-    let newListing=new Listing(req.body.listing)//new listinG create hbe taa dia 
+app.post("/listings",async(req,res,next)=>{
+
+    try{
+       let newListing=new Listing(req.body.listing)//new listinG create hbe taa dia 
    await  newListing.save()
    res.redirect("/listings")
+    }catch(err){
+      next(err)
+    }
+    
   
   
    //all var k obj r key bania dbo.listin obj r price key val pair bene jbe
@@ -116,7 +122,15 @@ app.delete("/listings/:id",async(req,res)=>{
 // }
 // })
 
+//404 route
+app.use((req, res) => {
+    res.status(404).send("404 Not Found");
+});
 
+//error handler
+app.use((err,req,res,next)=>{
+    res.send(" something wrong")
+})
 
 app.listen(PORT,()=>{
     console.log(`servr running at http://localhost:${PORT}`)
