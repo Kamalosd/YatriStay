@@ -4,20 +4,21 @@
 
   <!-- post k put request a vconvr krr jono method overide pkj instal krbo  -->
   <h3>Edit your Listing</h3>
-  <form method="POST"  action="/listings/<%=listing._id%>?_method=PUT" >
+  <form method="POST"  action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation">
 
     <div class="mb-3">
       <label for="title" class="form-lebel">Title</label>
       <input
        name="listing[title]"
        value="<%= listing.title %>"
-       type="text" class="form-control"/>
+       type="text" class="form-control"
+       required/>
     </div>
     <br/>
    
      <div class="mb-3">
        <label for="description" class="form-lebel">Description</label>
-       <textarea name="listing[description]" class="form-control"><%= listing.description %></textarea>
+       <textarea name="listing[description]" class="form-control" required><%= listing.description %> </textarea>
      </div>
      <br/>
     
@@ -26,7 +27,7 @@
         <input
          name="listing[image]"
          value="<%= listing.image %>"
-         type="text" class="form-control"/>
+         type="text" class="form-control" required/>
      </div>
      <br/>
       
@@ -37,7 +38,7 @@
          <input
          name="listing[price]"
          value="<%= listing.price %>"
-         type="number" class="form-control"/>
+         type="number" class="form-control" required/>
      </div>
      </div>
      <br/>
@@ -47,7 +48,7 @@
         <input
         name="listing[country]"
         value="<%= listing.country %>"
-        type="text" class="form-control"/>
+        type="text" class="form-control" required/>
      </div>
      </div>
      <br/>
@@ -57,7 +58,7 @@
         <input
         name="listing[location]"
         value="<%= listing.location %>"
-       type="text" class="form-control"/>
+       type="text" class="form-control" required/>
    
      </div>
     <br/>
@@ -66,3 +67,5 @@
 
 </div> <!-- col-8 offset-2 -->
 </div> <!-- row mt-3 -->
+
+<script src="/js/script.js"></script>
