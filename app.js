@@ -7,6 +7,7 @@ const PORT=3000
 const path=require("path")//ejs k req krara jono path setup
 const methodOverride=require("method-override")
 const ejsMate=require("ejs-mate")//ata template creatr or layout creat a help kre style r jonno use hoi,common template like navbar sob ejs pG athke
+const {listingSchema}=require("./schema.js")
 
 app.set("view engine","ejs")
 app.set("views",path.join(__dirname,"views"))
@@ -20,7 +21,7 @@ app.get('/',(req,res)=>{
     res.send("hii i am root")
 })
 
-mongoose.connect('mongodb://127.0.0.1:27017/hotelapp')
+mongoose.connect('mongodb://127.0.0.1:27017/YatriSathi')
 .then(() => {
     console.log("MongoDB connected");
 })
