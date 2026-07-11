@@ -58,6 +58,12 @@ app.get("/listings/:id",async(req,res)=>{
 app.post("/listings",async(req,res,next)=>{
 
     try{
+       let result= listingSchema.validate(req.body)//listing schema r modhe je constraint define krechi req.body statisfy krche kina
+        console.log(result)
+        if(result.error){
+            throw new Error(400,result.error)
+        }
+
        let newListing=new Listing(req.body.listing)//new listinG create hbe taa dia 
    await  newListing.save()
    res.redirect("/listings")
