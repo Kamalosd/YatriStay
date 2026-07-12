@@ -30,6 +30,20 @@ mongoose.connect('mongodb://127.0.0.1:27017/YatriSathi')
 });
 
 
+const validateListing=(req,res,next)=>{
+      let {error}= listingSchema.validate(req.body)
+        
+        if(error){
+            let errMsg=error.details.map((e)=>e.message).join(",")
+            throw new Error(400,result.errMsg)
+        }
+        else{
+            next()
+        }
+
+
+}
+
 //listinG a all return villa 
 app.get("/listings",async(req,res)=>{
   
@@ -55,13 +69,13 @@ app.get("/listings/:id",async(req,res)=>{
 })
 
 //create route
-app.post("/listings",async(req,res,next)=>{
+app.post("/listings",validateListing,async(req,res,next)=>{
 
     try{
        let result= listingSchema.validate(req.body)//listing schema r modhe je constraint define krechi req.body statisfy krche kina
         console.log(result)
         if(result.error){
-            throw new Error(400,result.error)
+            throw new Error(400,error)
         }
 
        let newListing=new Listing(req.body.listing)//new listinG create hbe taa dia 
@@ -86,7 +100,7 @@ app.get("/listings/:id/edit",async(req,res)=>{
 })
 
 //Update Route
-app.put("/listings/:id",async(req,res)=>{
+app.put("/listings/:id",validateListing,async(req,res)=>{
   
     let {id}=req.params
     const listing=await Listing.findByIdAndUpdate(id,{...req.body.listing})//...req.body.listing ata js r obj jar modhe sob paarmetr ache
