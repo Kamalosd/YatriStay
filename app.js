@@ -34,7 +34,7 @@ const validateListing=(req,res,next)=>{
       let {error}= listingSchema.validate(req.body)
         
         if(error){
-            let errMsg=error.details.map((e)=>e.message)
+            let errMsg=error.details.map((e)=>e.message).join(",")
             throw new Error(400,result.errMsg)
         }
         else{

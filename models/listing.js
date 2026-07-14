@@ -16,7 +16,13 @@ const listingSchema=new schema(
     },
     price:Number,
     location:String,
-    country:String
+    country:String,
+    reviews:[
+      {
+        type:Schema.Types.ObjectId,
+        ref:"Reviews"
+      }
+    ]
   }
 )
 const listing=mongoose.model("listing",listingSchema)
