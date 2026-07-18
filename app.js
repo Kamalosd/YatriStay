@@ -7,7 +7,7 @@ const PORT=3000
 const path=require("path")
 const methodOverride=require("method-override")
 const ejsMate=require("ejs-mate")
-const {listingSchema}=require("./schema.js")
+const {listingSchema,reviewSchema}=require("./schema.js")
 const Review = require("./models/review.js")
 
 
@@ -42,8 +42,18 @@ const validateListing=(req,res,next)=>{
         else{
             next()
         }
+}
 
-
+const validateReview=(req,res,next)=>{
+      let {error}= reviewSchema.validate(req.body)
+        
+        if(error){
+            let errMsg=error.details.map((e)=>e.message).join(",")
+            throw new Error(400,result.errMsg)
+        }
+        else{
+            next()
+        }
 }
 
 //listinG a all return villa 
@@ -123,7 +133,7 @@ app.delete("/listings/:id",async(req,res)=>{
 
 //Reviews
 //post route
-app.post("/listings/:id/reviews",async(req,res)=>{
+app.post("/listings/:id/reviews",validateReview, async(req,res)=>{
   
     let listing=await Listing.findById( req.params.id)
     let newReview=new Review(req.body.review)

@@ -12,3 +12,10 @@ module.exports.listingSchema=joi.object({
   }).required()
 }).required()
 //for server side validation schema we use joi,with the help of joi we define schema.joi k andar obj ana chaiye,obj r nm listinG ,ata joi k accordin akta obj hona cjhaiye r required
+
+module.exports.reviewSchema=joi.object({
+  review:joi.object({
+    rating:joi.number().required().min(1).max(5),
+    comment:joi.number().required()
+  }).required()
+})
