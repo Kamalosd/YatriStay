@@ -75,7 +75,7 @@ app.get("/listings/new",(req,res)=>{
 app.get("/listings/:id",async(req,res)=>{
   
     let {id}=req.params
-    const listing=await Listing.findById(id)//id r basis a find krbo listin r data,ota pass krbo show.ejs a
+    const listing=await Listing.findById(id).populate("reviews")//id r basis a find krbo listin r data,ota pass krbo show.ejs a
     res.render("listings/show",{listing})
   
 })
