@@ -53,6 +53,16 @@
      <li><%= review.comment%>, <%= review.rating%>stars</li>
  <% }%>
 
+ <% for(review of listing.reviews){%>
+     <div class="card">
+      <div class="card-body"></div>
+      <div class="card-title">jane doe</div>
+      <p class="card-text"><%=review.comment%></p>
+         <p class="card-text"><%=review.rating%></p>
+
+     </div>
+ <% }%>
+
   </ul>
 
   
