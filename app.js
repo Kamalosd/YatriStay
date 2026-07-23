@@ -141,8 +141,17 @@ app.post("/listings/:id/reviews",validateReview, async(req,res)=>{
     await newReview.save()
     await listing.save()
     
-
     res.redirect("/listings")
+  
+})
+
+//Delete review route
+app.delete("/listings/:id/reviews/:reviewId", async(req,res)=>{
+  
+    let {id,reviewId}= req.params
+    await Review.findById(reviewId)
+    
+    res.redirect(`/listings/${id}`)
   
 })
 
