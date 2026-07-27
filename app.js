@@ -10,7 +10,7 @@ const ejsMate=require("ejs-mate")
 const {listingSchema,reviewSchema}=require("./schema.js")
 const Review = require("./models/review.js")
 const listings = require("./routes/listing.js")
-
+const reviews = require("./routes/review.js")
 
 app.set("view engine","ejs")
 app.set("views",path.join(__dirname,"views"))
@@ -59,31 +59,7 @@ const validateReview=(req,res,next)=>{
 
 
 app.use("/listigs",listings )
-
-
-//Reviews
-//post route
-app.post("/listings/:id/reviews",validateReview, async(req,res)=>{
-  
-    let listing=await Listing.findById( req.params.id)
-    let newReview=new Review(req.body.review)
-    listing.reviews.push(newReview)
-    await newReview.save()
-    await listing.save()
-    
-    res.redirect("/listings")
-  
-})
-
-//Delete review route
-app.delete("/listings/:id/reviews/:reviewId", async(req,res)=>{
-  
-    let {id,reviewId}= req.params
-    await Review.findById(reviewId)
-    
-    res.redirect(`/listings/${id}`)
-  
-})
+app.use("/listings/:id/reviews",reviews)
 
 // app.get('/testListing',async(req,res)=>{ 
 
