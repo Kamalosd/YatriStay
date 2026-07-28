@@ -24,6 +24,11 @@ app.get('/',(req,res)=>{
     res.send("hii i am root")
 })
 
+app.get('/getcookies',(req,res)=>{ 
+    res.cookie("great","hello")
+    res.send("send you some cookies")
+})
+
 mongoose.connect('mongodb://127.0.0.1:27017/YatriSathi')
 .then(() => {
     console.log("MongoDB connected");
