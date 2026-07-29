@@ -11,7 +11,9 @@ const {listingSchema,reviewSchema}=require("./schema.js")
 const Review = require("./models/review.js")
 const listings = require("./routes/listing.js")
 const reviews = require("./routes/review.js")
+const cookieParser=require("cookie-parser")
 
+app.use(cookieParser())
 app.set("view engine","ejs")
 app.set("views",path.join(__dirname,"views"))
 app.use(express.urlencoded({extended:true}))
@@ -27,6 +29,11 @@ app.get('/',(req,res)=>{
 app.get('/getcookies',(req,res)=>{ 
     res.cookie("great","hello")
     res.send("send you some cookies")
+})
+
+app.get('/',(req,res)=>{ 
+    console.dir(req.cookies)
+   
 })
 
 mongoose.connect('mongodb://127.0.0.1:27017/YatriSathi')
