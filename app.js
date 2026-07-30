@@ -26,6 +26,12 @@ app.get('/',(req,res)=>{
     res.send("hii i am root")
 })
 
+app.get('/getsignedcookie',(req,res)=>{ 
+    res.cookie("made-in","india",{signed:true})
+    res.send("signed cookies sent")
+})
+
+
 app.get('/getcookies',(req,res)=>{ 
     res.cookie("great","hello")
     res.send("send you some cookies")
