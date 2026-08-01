@@ -37,6 +37,11 @@ app.get('/getcookies',(req,res)=>{
     res.send("send you some cookies")
 })
 
+app.get('/verify',(req,res)=>{ 
+    console.log(req.signedCookies)
+    res.send("verified")
+   
+})
 app.get('/',(req,res)=>{ 
     console.dir(req.cookies)
    
