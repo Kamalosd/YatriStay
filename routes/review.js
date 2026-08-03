@@ -1,6 +1,21 @@
 
 const express=require("express")
-const router=express.router()
+const router=express.Router({mergeParams:true})
+const {reviewSchema}=require("../schema.js")
+const Review = require("../models/review.js")
+const Listing = require("../models/listing.js")
+
+const validateReview=(req,res,next)=>{
+      let {error}= reviewSchema.validate(req.body)
+        
+        if(error){
+            let errMsg=error.details.map((e)=>e.message).join(",")
+            throw new Error(400,result.errMsg)
+        }
+        else{
+            next()
+        }
+}
 
 
 //Reviews
@@ -12,8 +27,8 @@ router.post("/",validateReview, async(req,res)=>{
     listing.reviews.push(newReview)
     await newReview.save()
     await listing.save()
-    
-    res.redirect("/listings")
+       req.flash("success","New Review Created")
+    res.redirect(`/listings/${listing._id}`)
   
 })
 
@@ -21,8 +36,8 @@ router.post("/",validateReview, async(req,res)=>{
 router.delete("/:reviewId", async(req,res)=>{
   
     let {id,reviewId}= req.params
-    await Review.findById(reviewId)
-    
+    await Review.findByIdAndDelete(reviewId)
+    req.flash("success"," Review Deleted")
     res.redirect(`/listings/${id}`)
   
 })

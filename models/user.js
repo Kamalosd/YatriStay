@@ -1,15 +1,15 @@
-const { types, required } = require('joi')
-const mongoose=require('mongoose')
-const schema=mongoose.Schema
-const passportLocalMongoose=require("passport-local-mongoose")
+// const { types, required } = require('joi')
+// const mongoose=require('mongoose')
+// const schema=mongoose.Schema
+// const passportLocalMongoose=require("passport-local-mongoose")
 
-const userSchema=new Schema({
-  email:{
-    type:String,
-    required:true
-  }
-})
+// const userSchema=new Schema({
+//   email:{
+//     type:String,
+//     required:true
+//   }
+// })
 
-userSchema.plugin(passportLocalMongoose)
+// userSchema.plugin(passportLocalMongoose)
 
-module.exports=mongoose.model("user",userSchema)
+// module.exports=mongoose.model("user",userSchema)

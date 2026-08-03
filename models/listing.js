@@ -12,7 +12,7 @@ const listingSchema=new schema(
     image:{
      type: String,//imG undefine null ki ,2nd img HAI buto rlink empt
      default:"file:///C:/Users/91743/OneDrive/Desktop/Home%20Build%20-%20IMG%20HOTELS.html",
-     set:(v)=>v===" "?'file:///C:/Users/91743/OneDrive/Desktop/Home%20Build%20-%20IMG%20HOTELS.html ' :v
+     set:(v)=>v===""?'file:///C:/Users/91743/OneDrive/Desktop/Home%20Build%20-%20IMG%20HOTELS.html ' :v
     },
     price:Number,
     location:String,
@@ -20,7 +20,7 @@ const listingSchema=new schema(
     reviews:[
       {
         type:schema.Types.ObjectId,
-        ref:"Reviews"
+        ref:"Review"
       }
     ]
   }
