@@ -11,6 +11,9 @@ const reviews = require("./routes/review.js")
 // const cookieParser=require("cookie-parser")
 const session = require("express-session")
 const flash=require("connect-flash")
+const passport=require("passport")
+const localstrategy=require("passport-local")
+const user=require("./models/user.js")
 
 // app.use(cookieParser("secret ode"))
 app.set("view engine","ejs")
@@ -37,6 +40,12 @@ app.get('/',(req,res)=>{
 
 app.use(session(sessionOptions))
 app.use(flash())
+
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(new localstrategy(user.authenticate()))
+passport.serializeUser(user.serializeUser())
+passport.deserializeUser(user.deserializeUser())
 
 app.use((req,res,next)=>{
     res.locals.success=req.flash("success")
