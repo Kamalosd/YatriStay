@@ -53,6 +53,15 @@ app.use((req,res,next)=>{
     next()
 })
 
+
+app.get("/demouser",async(req,res)=>{
+    let fakeUser=new user({
+        email:"std@gmail.com",
+        username:"delta-student"
+    })
+ let registeredUser=  await user.register(fakeUser,"helloworld")
+ res.send(registeredUser)
+})
 // app.get('/getsignedcookie',(req,res)=>{ 
 //     res.cookie("made-in","india",{signed:true})
 //     res.send("signed cookies sent")
