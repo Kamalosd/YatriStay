@@ -6,14 +6,16 @@ const PORT=3000
 const path=require("path")
 const methodOverride=require("method-override")
 const ejsMate=require("ejs-mate")
-const listings = require("./routes/listing.js")
-const reviews = require("./routes/review.js")
+
 // const cookieParser=require("cookie-parser")
 const session = require("express-session")
 const flash=require("connect-flash")
 const passport=require("passport")
 const localstrategy=require("passport-local")
 const user=require("./models/user.js")
+const listingRouter = require("./routes/listing.js")
+const reviewRouter = require("./routes/review.js")
+const userRouter=require("./routes/user.js")
 
 // app.use(cookieParser("secret ode"))
 app.set("view engine","ejs")
@@ -43,7 +45,7 @@ app.use(flash())
 
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(new localstrategy(user.authenticate()))
+passport.use(new localstrategy(user.authenticate()))
 passport.serializeUser(user.serializeUser())
 passport.deserializeUser(user.deserializeUser())
 
@@ -93,8 +95,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/YatriSathi')
 
 
 
-app.use("/listings",listings )
-app.use("/listings/:id/reviews",reviews)
+app.use("/listings",listingRouter )
+app.use("/listings/:id/reviews",reviewRouter)
+app.use("/",userRouter)
 
 // app.get('/testListing',async(req,res)=>{ 
 
@@ -125,10 +128,10 @@ app.use((req, res) => {
 });
 
 //error handler
-app.use((err,req,res,next)=>{
-    res.send(" something wrong")
-})
-
+app.use((err, req, res, next) => {
+    console.log(err);
+    res.status(500).send(err.message);
+});
 app.listen(PORT,()=>{
     console.log(`servr running at http://localhost:${PORT}`)
 })
