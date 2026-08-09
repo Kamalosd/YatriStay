@@ -52,18 +52,21 @@ passport.deserializeUser(user.deserializeUser())
 app.use((req,res,next)=>{
     res.locals.success=req.flash("success")
     res.locals.error=req.flash("error")
+    res.locals.currUser=req.user  
+    // new var create krlm jeta req.user r infpo store krbe karon directly ejs a req obj k directly use krte prina 
     next()
 })
 
 
-app.get("/demouser",async(req,res)=>{
-    let fakeUser=new user({
-        email:"std@gmail.com",
-        username:"delta-student"
-    })
- let registeredUser=  await user.register(fakeUser,"helloworld")
- res.send(registeredUser)
-})
+// app.get("/demouser",async(req,res)=>{
+//     let fakeUser=new user({
+//         email:"std@gmail.com",
+//         username:"delta-student"
+//     })
+//  let registeredUser=  await user.register(fakeUser,"helloworld")
+//  res.send(registeredUser)
+// })
+
 // app.get('/getsignedcookie',(req,res)=>{ 
 //     res.cookie("made-in","india",{signed:true})
 //     res.send("signed cookies sent")

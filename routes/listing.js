@@ -3,7 +3,7 @@ const express=require("express")
 const router=express.Router()
 const {listingSchema}=require("../schema.js")
 const Listing = require("../models/listing.js")
-
+const {isLoggedIn}=require("../middleware.js")
 
 const validateListing=(req,res,next)=>{
       let {error}= listingSchema.validate(req.body)
@@ -27,9 +27,8 @@ router.get("/",async(req,res)=>{
 
 
 //new Route
-router.get("/new",(req,res)=>{
-  
-   res.render("listings/new")
+router.get("/new",isLoggedIn,(req,res)=>{
+   res.render("listings/new.ejs")
 })
 
 
@@ -42,12 +41,12 @@ router.get("/:id",async(req,res)=>{
        req.flash("error","Listing you requested for does not exist")    
        res.redirect("/listings")
     }
-    res.render("listings/show",{listing})
+    res.render("listings/show.ejs",{listing})
   
 })
 
 //create route
-router.post("/",validateListing,async(req,res,next)=>{
+router.post("/",isLoggedIn,validateListing,async(req,res,next)=>{
 
     try{
        let result= listingSchema.validate(req.body)//listing schema r modhe je constraint define krechi req.body statisfy krche kina
@@ -84,7 +83,7 @@ router.get("/:id/edit",async(req,res)=>{
 })
 
 //Update Route
-router.put("/:id",validateListing,async(req,res)=>{
+router.put("/:id",validateListing,isLoggedIn,async(req,res)=>{
   
     let {id}=req.params
     const listing=await Listing.findByIdAndUpdate(id,{...req.body.listing})//...req.body.listing ata js r obj jar modhe sob paarmetr ache
@@ -94,7 +93,7 @@ router.put("/:id",validateListing,async(req,res)=>{
 })
 
 //Delete Route
-router.delete("/:id",async(req,res)=>{
+router.delete("/:id",isLoggedIn,async(req,res)=>{
   
     let {id}=req.params
     const deletedListing=await Listing.findByIdAndDelete(id)//...req.body.listing ata js r obj jar modhe sob paarmetr ache
