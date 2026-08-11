@@ -1,8 +1,8 @@
 const mongoose=require('mongoose')
-const schema=mongoose.Schema
+const Schema=mongoose.Schema
 const review=require("./review.js")
 
-const listingSchema=new schema(
+const listingSchema=new Schema(
   {
     title:{
      type: String,
@@ -19,10 +19,14 @@ const listingSchema=new schema(
     country:String,
     reviews:[
       {
-        type:schema.Types.ObjectId,
+        type:Schema.Types.ObjectId,
         ref:"Review"
       }
-    ]
+    ],
+    owner:{
+        type:Schema.Types.ObjectId,
+        ref:"user"
+    }
   }
 )
 
