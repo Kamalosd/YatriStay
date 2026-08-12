@@ -10,9 +10,8 @@ const listingSchema=new Schema(
     },
     description:String,
     image:{
-     type: String,//imG undefine null ki ,2nd img HAI buto rlink empt
-     default:"file:///C:/Users/91743/OneDrive/Desktop/Home%20Build%20-%20IMG%20HOTELS.html",
-     set:(v)=>v===""?'file:///C:/Users/91743/OneDrive/Desktop/Home%20Build%20-%20IMG%20HOTELS.html ' :v
+     url: String,
+     filename:String
     },
     price:Number,
     location:String,

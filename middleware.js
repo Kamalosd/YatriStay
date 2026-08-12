@@ -33,7 +33,6 @@ module.exports.isOwner= async(req,res,next)=>{
 
 module.exports.validateListing= async(req,res,next)=>{
       let {error}= listingSchema.validate(req.body)
-        
         if(error){
             let errMsg=error.details.map((e)=>e.message).join(",")
             throw new Error(errMsg)
@@ -45,22 +44,22 @@ module.exports.validateListing= async(req,res,next)=>{
 
 
 
- module.exports.validateReview= async(req,res,next)=>{ const validateReview=(req,res,next)=>{
+ module.exports.validateReview= async(req,res,next)=>{ 
       let {error}= reviewSchema.validate(req.body)
         
         if(error){
             let errMsg=error.details.map((e)=>e.message).join(",")
-            throw new Error(400,result.errMsg)
+            throw new Error(errMsg)
         }
         else{
             next()
         }
-}}
+}
 
 
 module.exports.isReviewAuthor= async(req,res,next)=>{
    let { id,reviewId } = req.params; 
-    let listing=await Review.findById(reviewId)
+    let review=await Review.findById(reviewId)
     if(!review.author.equals(res.locals.currUser._id)){
         req.flash("error","You are not the author of this review")
          return res.redirect("/listings")

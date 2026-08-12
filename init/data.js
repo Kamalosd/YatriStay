@@ -7,7 +7,11 @@ const sampleListing=[
     price: 9500,
     location: "Goa",
     country: "India",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700"
+    image:
+    {
+     url:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700",
+     filename:"listingimage"
+    } 
   },
   {
     title: "Hilltop Cottage",
@@ -15,7 +19,10 @@ const sampleListing=[
     price: 4200,
     location: "Shimla",
     country: "India",
-    image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=700"
+    image:{
+      url:"https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=700",
+    filename:"listingimage"
+    }
   },
   {
     title: "Royal Heritage Haveli",
@@ -23,7 +30,10 @@ const sampleListing=[
     price: 7800,
     location: "Jodhpur",
     country: "India",
-    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=700"
+    image: {
+      url:"https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=700",
+    filename:"listingimage"
+    }
   },
   {
     title: "Modern Studio Apartment",
@@ -31,7 +41,10 @@ const sampleListing=[
     price: 3500,
     location: "Hyderabad",
     country: "India",
-    image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=700"
+    image: {
+      url:"https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=700",
+    filename:"listingimage"
+    }
   },
   {
     title: "Tea Garden Retreat",
@@ -39,7 +52,10 @@ const sampleListing=[
     price: 4800,
     location: "Darjeeling",
     country: "India",
-    image: "https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=700"
+    image: {
+      url:"https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=700",
+    filename:"listingimage"
+    }
   },
   {
     title: "Desert Camp Resort",
@@ -47,7 +63,10 @@ const sampleListing=[
     price: 5600,
     location: "Jaisalmer",
     country: "India",
-    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700"
+    image: {
+      url:"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700",
+    filename:"listingimage"
+    }
   },
   {
     title: "Backwater Houseboat",
@@ -55,7 +74,10 @@ const sampleListing=[
     price: 6700,
     location: "Alleppey",
     country: "India",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700"
+    image: {
+      url:"https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700",
+    filename:"listingimage"
+    }
   },
   {
     title: "Luxury City Hotel",
@@ -63,7 +85,10 @@ const sampleListing=[
     price: 8900,
     location: "Mumbai",
     country: "India",
-    image: "https://images.unsplash.com/photo-1535827841776-24afc1e255ac?w=700"
+    image: {
+      url:"https://images.unsplash.com/photo-1535827841776-24afc1e255ac?w=700",
+    filename:"listingimage"
+    }
   },
   {
     title: "Forest Eco Lodge",
@@ -71,7 +96,10 @@ const sampleListing=[
     price: 5300,
     location: "Jim Corbett",
     country: "India",
-    image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=700"
+    image: {
+      url:"https://images.unsplash.com/photo-1613977257363-707ba9348227?w=700",
+    filename:"listingimage"
+    }
   },
   {
     title: "Snow View Chalet",
@@ -79,7 +107,9 @@ const sampleListing=[
     price: 6200,
     location: "Gulmarg",
     country: "India",
-    image: "https://images.unsplash.com/photo-1670589953882-b94c9cb380f5?w=700"
+    image: {
+      url:"https://images.unsplash.com/photo-1670589953882-b94c9cb380f5?w=700",filename:"listingimage"
+    }
   }
 ]
 

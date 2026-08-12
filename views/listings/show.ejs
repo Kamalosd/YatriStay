@@ -4,7 +4,7 @@
   <h3><%= listing.title%></h3>
  </div>
   <div class="card col-6 offset-3 show-card">
-    <img src="<%= listing.image%>" class="card-img-top show-img" alt="listing_image"/>
+    <img src="<%= listing.image.url%>" class="card-img-top show-img" alt="listing_image"/>
     <div class="card-body">
       <p class="card-text">
         <% if (listing.owner) { %>
@@ -83,7 +83,7 @@
     <div class="col-6 mb-3">
       <div class="card h-100">
         <div class="card-body">
-          <h5 class="card-title">@<% review.author.username%></h5>
+          <h5 class="card-title">@<%= review.author.username%></h5>
                <p class="starability-result card-text" data-rating="<%= review._id%>">
         
         </p>

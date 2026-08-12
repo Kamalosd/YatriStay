@@ -13,12 +13,9 @@ const upload=multer({storage})
 router.
 route("/")
 .get(listingController.index)
-// . post  (isLoggedIn,validateListing,listingController.createListing)
+. post  (isLoggedIn,upload.single('listing[image]'),validateListing,listingController.createListing)
 
 
-.post(upload.single('listing[image]'),(req,res)=>{
-  res.send(req.file)
-})
 
 //new Route
 router.get("/new",isLoggedIn,listingController.renderNewForm)
@@ -31,7 +28,7 @@ router.
 route("/:id")
 .get(listingController.showListing)
 
-.put(validateListing,isLoggedIn,isOwner,listingController.updateListing)
+.put(isLoggedIn,isOwner,upload.single('listing[image]'),validateListing,listingController.updateListing)
 
 .delete(isLoggedIn,isOwner,listingController.destroyListing)
 
