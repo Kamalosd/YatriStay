@@ -24,17 +24,16 @@ const dburl=process.env.ATLASDB_URL
 
 // mongoose.connect('mongodb://127.0.0.1:27017/YatriSathi')
 main()
-.then(() => {
-    console.log("MongoDB connected");
-})
-.catch((err) => {
-    console.log(err);
-});
-
+    .then(() => {
+        console.log("Database connection successful");
+    })
+    .catch((err) => {
+        console.log("MongoDB connection error:", err);
+    });
 async function main() {
-    await mongoose.connect(dburl)
+    await mongoose.connect(dburl);
+    console.log("MongoDB connected");
 }
-
 
 // app.use(cookieParser("secret ode"))
 app.set("view engine","ejs")
@@ -156,8 +155,14 @@ app.use((req, res) => {
 //error handler
 app.use((err, req, res, next) => {
     console.log(err);
-    res.status(500).send(err.message);
+
+    if (res.headersSent) {
+        return next(err);
+    }
+
+    res.status(500).send("Something went wrong");
 });
-app.listen(PORT,()=>{
-    console.log(`servr running at http://localhost:${PORT}`)
-})
+
+app.listen(PORT, () => {
+    console.log(`server running at http://localhost:${PORT}`);
+});
