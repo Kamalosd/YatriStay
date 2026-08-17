@@ -42,8 +42,6 @@ module.exports.createListing=async(req,res,next)=>{
 
 
 
-
-
 module.exports.renderEditForm=async(req,res)=>{
   
     let {id}=req.params
